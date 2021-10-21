@@ -48,8 +48,12 @@ export default {
 
   methods:{
     verifyAuth: function() {
-      if(this.is_auth == false)
-        this.$router.push({name: "logIn"})
+      this.is_auth = localStorage.getItem("isAuth") || false;
+
+			if (this.is_auth == false)
+        this.$router.push({ name: "logIn" });
+      else
+        this.$router.push({ name: "home" });        
     },
 
     loadLogIn: function(){
