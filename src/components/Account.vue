@@ -59,7 +59,7 @@ export default {
 
         verifyToken: function () {
             return axios.post(
-                "https://127.0.0.1:8000/refresh/", 
+                "http://127.0.0.1:8000/refresh/", 
                 {
                     refresh: localStorage.getItem("token_refresh")
                 },

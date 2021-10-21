@@ -57,7 +57,7 @@ export default {
   methods: {
     processSignUp: function() {
       axios
-        .post("https://mision-tic-bank-be.herokuapp.com/user/", this.user, {
+        .post("http://127.0.0.1:8000/user/", this.user, {
           headers: {}
         })
         .then(result => {
@@ -66,10 +66,9 @@ export default {
             token_access: result.data.access,
             token_refresh: result.data.refresh
           };
-
           this.$emit("completedSignUp", dataSignUp);
-        })
-        .catch(error => {
+        }
+        ).catch(error => {
           console.log(error);
           alert("Erroe en el resgistro.");
         });
