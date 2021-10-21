@@ -6,7 +6,7 @@
       <h1> Banco Mision TIC </h1>
       <nav>
         <button v-if="is_auth" v-on:click="loadHome"> Inicio </button>
-        <button v-if="is_auth" > Cuenta </button>
+        <button v-if="is_auth" v-on:click="loadAccount"> Cuenta </button>
         <button v-if="is_auth" v-on:click="logOut"> Cerrar Sesión </button>
         <button v-if="!is_auth" v-on:click="loadLogIn" > Iniciar Sesión </button>
         <button v-if="!is_auth" v-on:click="loadSignUp" > Registrarse </button>
@@ -68,6 +68,10 @@ export default {
     loadHome: function() {
       this.$router.push({ name: "home" });
     },
+
+    loadAccount: function () {
+			this.$router.push({ name: "account" });
+		},
 
     completedLogIn: function(data) {
       localStorage.setItem("isAuth", true);
