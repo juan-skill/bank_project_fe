@@ -7,7 +7,7 @@
       <nav>
         <button v-if="is_auth" v-on:click="loadHome"> Inicio </button>
         <button v-if="is_auth" > Cuenta </button>
-        <button v-if="is_auth" > Cerrar Sesión </button>
+        <button v-if="is_auth" v-on:click="logOut"> Cerrar Sesión </button>
         <button v-if="!is_auth" v-on:click="loadLogIn" > Iniciar Sesión </button>
         <button v-if="!is_auth" v-on:click="loadSignUp" > Registrarse </button>
       </nav>
@@ -18,6 +18,7 @@
       <router-view  
         v-on:completedLogIn="completedLogIn"
         v-on:completedSignUp="completedSignUp"
+        v-on:logOut="logOut"
       >
       </router-view>
     </div>
@@ -82,6 +83,11 @@ export default {
 			this.completedLogIn(data);
     },
 
+    logOut: function () {
+			localStorage.clear();
+			alert("Sesión Cerrada");
+			this.verifyAuth();
+		},
   },
 
   created: function(){
